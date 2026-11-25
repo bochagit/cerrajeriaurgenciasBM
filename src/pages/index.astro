@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import BrandLogo from "../components/BrandLogo.astro";
 import HeroIllustration from "../components/HeroIllustration.astro";
 import ServiceIcon from "../components/ServiceIcon.astro";
-import CoverageMap from "../components/CoverageMap.astro";
+import CoverageZones from "../components/CoverageZones.astro";
 import { SITE } from "../data/site";
 import { SERVICIOS } from "../data/servicios";
 import { BENEFICIOS, PASOS, FAQS } from "../data/content";
@@ -38,11 +38,11 @@ import { BENEFICIOS, PASOS, FAQS } from "../data/content";
         </div>
 
         <h1 class="font-display text-4xl font-extrabold tracking-tight text-carbon-grafito sm:text-5xl">
-          Cerrajero de urgencia las 24 horas en {SITE.coveragePlaceholder}
+          Cerrajero de urgencia las 24 horas en {SITE.coverageLabel}
         </h1>
 
         <p class="mt-4 text-base leading-relaxed text-carbon-grafito/80 sm:text-lg">
-          Contactate con nosotros, un profesional va a estár brindandote ayuda segura, rapida y para todo tipo de urgencias.
+          Contactate con nosotros: un profesional va a estar brindándote ayuda segura y rápida para cualquier tipo de urgencia.
         </p>
 
         <!-- Jerarquía de botones según Sección 04 del Manual de Marca -->
@@ -184,7 +184,7 @@ import { BENEFICIOS, PASOS, FAQS } from "../data/content";
             {SITE.phoneDisplay}
           </a>
           <p class="mt-2 text-sm text-carbon-grafito/60">
-            Llegada estimada: {SITE.responseTimePlaceholder}
+            Llegada estimada: {SITE.responseTime}
           </p>
 
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -219,7 +219,7 @@ import { BENEFICIOS, PASOS, FAQS } from "../data/content";
           </div>
         </div>
 
-        <CoverageMap />
+        <CoverageZones />
       </div>
     </div>
   </section>
@@ -361,59 +361,59 @@ import { BENEFICIOS, PASOS, FAQS } from "../data/content";
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Footer: marca, contacto y cobertura -->
   <footer class="bg-carbon-grafito py-12 text-blanco-hueso">
-    <div class="mx-auto max-w-5xl px-4 sm:px-6">
-      <div class="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
+    <div
+      class="mx-auto flex max-w-5xl flex-col gap-10 px-4 sm:px-6 lg:flex-row lg:items-start lg:justify-between lg:gap-16"
+    >
+      <BrandLogo inverse size="lg" />
+
+      <div class="grid gap-8 sm:grid-cols-2 sm:gap-12">
         <div>
-          <BrandLogo inverse size="sm" />
-          <p class="mt-4 max-w-xs text-sm leading-relaxed text-blanco-hueso/60">
-            [PLACEHOLDER: Razón social y datos de inscripción profesional.]
+          <h3
+            class="font-display text-xs font-bold tracking-[0.14em] text-blanco-hueso/50 uppercase"
+          >
+            Contacto
+          </h3>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li>
+              <a
+                href={SITE.phoneHref}
+                class="text-blanco-hueso/80 transition-colors hover:text-blanco-hueso"
+              >
+                {SITE.phoneDisplay}
+              </a>
+            </li>
+            <li>
+              <a
+                href={SITE.whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-blanco-hueso/80 transition-colors hover:text-blanco-hueso"
+              >
+                WhatsApp {SITE.whatsappDisplay}
+              </a>
+            </li>
+            <li class="flex items-center gap-2 pt-1 text-xs text-blanco-hueso/50">
+              <span class="h-1.5 w-1.5 rounded-full bg-rojo-emergencia" aria-hidden="true"></span>
+              {SITE.availabilityLabel}
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3
+            class="font-display text-xs font-bold tracking-[0.14em] text-blanco-hueso/50 uppercase"
+          >
+            Cobertura
+          </h3>
+          <p class="mt-4 text-sm leading-relaxed text-blanco-hueso/70">
+            {SITE.coverageLabel}
+          </p>
+          <p class="mt-2 text-xs text-blanco-hueso/45">
+            Cobertura orientativa: confirmá tu localidad al contactarnos.
           </p>
         </div>
-
-        <div class="grid gap-8 sm:grid-cols-2">
-          <div>
-            <h3
-              class="font-display text-xs font-bold tracking-[0.14em] text-blanco-hueso/50 uppercase"
-            >
-              Contacto
-            </h3>
-            <ul class="mt-3 space-y-2 text-sm">
-              <li>
-                <a
-                  href={SITE.phoneHref}
-                  class="text-blanco-hueso/80 transition-colors hover:text-blanco-hueso"
-                >
-                  {SITE.phoneDisplay}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={SITE.whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-blanco-hueso/80 transition-colors hover:text-blanco-hueso"
-                >
-                  WhatsApp {SITE.whatsappDisplay}
-                </a>
-              </li>
-              <li class="text-blanco-hueso/60">{SITE.availabilityLabel}</li>
-            </ul>
-          </div>
-          <div>
-            <h3
-              class="font-display text-xs font-bold tracking-[0.14em] text-blanco-hueso/50 uppercase"
-            >
-              Cobertura
-            </h3>
-            <p class="mt-3 text-sm text-blanco-hueso/60">{SITE.coveragePlaceholder}</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-10 border-t border-white/10 pt-6 text-xs text-blanco-hueso/40">
-        © 2026 [PLACEHOLDER: Razón social]. Todos los derechos reservados.
       </div>
     </div>
   </footer>

@@ -12,7 +12,7 @@ export const SERVICIOS = [
   {
     title: "Cerrajería automotriz",
     description:
-      "Apertura de vehículos, extracción de llaves y reprogramación de controles.",
+      "Apertura de vehículos, extracción de llaves y reprogramación.",
     icon: "car",
   },
   {

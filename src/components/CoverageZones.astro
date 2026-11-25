@@ -1,0 +1,76 @@
+---
+import { ZONAS } from "../data/content";
+---
+
+<div>
+  <div class="flex items-start justify-between gap-4">
+    <div>
+      <div class="flex items-center gap-2">
+        <span class="h-2 w-2 rounded-full bg-rojo-emergencia" aria-hidden="true"></span>
+        <h3 class="font-display text-lg font-bold text-carbon-grafito">Área operativa</h3>
+      </div>
+      <p class="mt-1 max-w-xl text-sm leading-relaxed text-carbon-grafito/65">
+        Cobertura orientativa en CABA y el primer cordón del Gran Buenos Aires. Confirmá tu
+        localidad al contactarnos.
+      </p>
+    </div>
+
+    <span
+      class="hidden shrink-0 rounded-full border border-carbon-grafito/15 px-3 py-1 text-xs font-medium text-carbon-grafito/60 sm:inline-flex"
+    >
+      {ZONAS.length} zonas
+    </span>
+  </div>
+
+  <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+    {
+      ZONAS.map((zona, index) => (
+        <li
+          id={`zona-${zona.id}`}
+          class:list={[
+            "relative overflow-hidden rounded-2xl border p-5",
+            zona.id === "caba"
+              ? "border-rojo-emergencia/30 bg-rojo-emergencia/[0.03]"
+              : "border-carbon-grafito/10 bg-white",
+          ]}
+        >
+          <span
+            class="pointer-events-none absolute top-2 right-4 font-display text-4xl font-extrabold text-carbon-grafito/5"
+            aria-hidden="true"
+          >
+            {String(index + 1).padStart(2, "0")}
+          </span>
+
+          <div class="flex items-center gap-2">
+            <span
+              class:list={[
+                "h-1.5 w-1.5 rounded-full",
+                zona.id === "caba" ? "bg-rojo-emergencia" : "bg-carbon-grafito/40",
+              ]}
+              aria-hidden="true"
+            ></span>
+            <h4 class="font-display text-base font-bold text-carbon-grafito">{zona.name}</h4>
+          </div>
+
+          <p class="mt-2 text-xs leading-relaxed text-carbon-grafito/60">
+            {zona.description}
+          </p>
+
+          <ul class="mt-4 flex flex-wrap gap-2">
+            {zona.localidades.map((localidad) => (
+              <li
+                class="rounded-full bg-blanco-hueso px-2.5 py-1 text-xs text-carbon-grafito/75 ring-1 ring-carbon-grafito/10"
+              >
+                {localidad}
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="mt-4 text-xs text-carbon-grafito/45">
+    Listado orientativo: las localidades y los límites de cobertura se confirman al contactarnos.
+  </p>
+</div>
