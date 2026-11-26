@@ -1,6 +1,6 @@
 export const SITE = {
-  brandName: "Cerrajería Urgencias 24hs",
-  title: "Cerrajería Urgencias 24hs | Apertura Rápida y Emergencias",
+  brandName: "Cerrajería Urgencias BM 24hs",
+  title: "Cerrajería Urgencias BM 24hs | Apertura Rápida y Emergencias",
   description:
     "Cerrajería de profesión. Ayuda segura, rápida y para todo tipo de urgencias.",
 
